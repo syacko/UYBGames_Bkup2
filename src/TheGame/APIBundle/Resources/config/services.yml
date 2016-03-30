@@ -1,0 +1,4 @@
+services:
+#    the_game_api.example:
+#        class: TheGame\APIBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
