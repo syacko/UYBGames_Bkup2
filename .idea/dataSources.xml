@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="231703627">
+    <data-source source="LOCAL" name="PostgreSQL - thegameDB@192.168.41.60" uuid="07cdcd9e-c2a4-4097-be03-315b9038a367">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://192.168.41.60:5432/thegameDB</jdbc-url>
+    </data-source>
+  </component>
+</project>

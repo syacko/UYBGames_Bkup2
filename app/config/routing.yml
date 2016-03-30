@@ -1,3 +1,7 @@
+the_game_maps_maps:
+    resource: "@TheGameMapsBundle/Controller/MapsController.php"
+    type:     annotation
+
 the_game_api:
     resource: "@TheGameAPIBundle/Controller/"
     type:     annotation
