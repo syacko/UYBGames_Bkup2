@@ -16,6 +16,14 @@ use TheGame\MapsBundle\Form\MapsType;
  */
 class MapsController extends Controller
 {
+    private $jsLibrary;
+
+    private function __constructor()
+    {
+        $jsLibrary = $this->container->getParameter("js_library");
+
+    }
+
     /**
      * Lists all Maps entities.
      *
@@ -28,9 +36,13 @@ class MapsController extends Controller
 
         $maps = $em->getRepository('TheGameMapsBundle:Maps')->findAll();
 
-        return $this->render('maps/index.html.twig', array(
-            'maps' => $maps,
-        ));
+        return $this->render(
+            'maps/index.html.twig',
+            array(
+                'maps' => $maps,
+                'jsLibrary' => $this->jsLibrary,
+            )
+        );
     }
 
     /**
@@ -53,10 +65,14 @@ class MapsController extends Controller
             return $this->redirectToRoute('crud_maps_show', array('id' => $map->getId()));
         }
 
-        return $this->render('maps/new.html.twig', array(
-            'map' => $map,
-            'form' => $form->createView(),
-        ));
+        return $this->render(
+            'maps/new.html.twig',
+            array(
+                'map' => $map,
+                'jsLibrary' => $this->jsLibrary,
+                'form' => $form->createView(),
+            )
+        );
     }
 
     /**
@@ -69,10 +85,14 @@ class MapsController extends Controller
     {
         $deleteForm = $this->createDeleteForm($map);
 
-        return $this->render('maps/show.html.twig', array(
-            'map' => $map,
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'maps/show.html.twig',
+            array(
+                'map' => $map,
+                'jsLibrary' => $this->jsLibrary,
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
 
     /**
@@ -95,11 +115,15 @@ class MapsController extends Controller
             return $this->redirectToRoute('crud_maps_edit', array('id' => $map->getId()));
         }
 
-        return $this->render('maps/edit.html.twig', array(
-            'map' => $map,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->render(
+            'maps/edit.html.twig',
+            array(
+                'map' => $map,
+                'jsLibrary' => $this->jsLibrary,
+                'edit_form' => $editForm->createView(),
+                'delete_form' => $deleteForm->createView(),
+            )
+        );
     }
 
     /**
@@ -134,7 +158,6 @@ class MapsController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('crud_maps_delete', array('id' => $map->getId())))
             ->setMethod('DELETE')
-            ->getForm()
-        ;
+            ->getForm();
     }
 }
