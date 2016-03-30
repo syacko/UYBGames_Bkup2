@@ -17,11 +17,12 @@ use TheGame\MapsBundle\Form\MapsType;
 class MapsController extends Controller
 {
     private $jsLibrary;
+    private $cssLibrary;
 
     private function __constructor()
     {
         $jsLibrary = $this->container->getParameter("js_library");
-
+        $cssLibrary = $this->container->getParameter("css_library");
     }
 
     /**
@@ -41,6 +42,7 @@ class MapsController extends Controller
             array(
                 'maps' => $maps,
                 'jsLibrary' => $this->jsLibrary,
+                'cssLibrary' => $this->cssLibrary,
             )
         );
     }
@@ -70,6 +72,7 @@ class MapsController extends Controller
             array(
                 'map' => $map,
                 'jsLibrary' => $this->jsLibrary,
+                'cssLibrary' => $this->cssLibrary,
                 'form' => $form->createView(),
             )
         );
@@ -90,6 +93,7 @@ class MapsController extends Controller
             array(
                 'map' => $map,
                 'jsLibrary' => $this->jsLibrary,
+                'cssLibrary' => $this->cssLibrary,
                 'delete_form' => $deleteForm->createView(),
             )
         );
@@ -120,6 +124,7 @@ class MapsController extends Controller
             array(
                 'map' => $map,
                 'jsLibrary' => $this->jsLibrary,
+                'cssLibrary' => $this->cssLibrary,
                 'edit_form' => $editForm->createView(),
                 'delete_form' => $deleteForm->createView(),
             )
