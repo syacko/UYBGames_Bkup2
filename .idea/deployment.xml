@@ -5,7 +5,22 @@
       <paths name="UYBGames">
         <serverdata>
           <mappings>
-            <mapping deploy="/UYBGames" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/UYBGames/app" local="$PROJECT_DIR$/app" web="/app" />
+            <mapping deploy="/UYBGames/src" local="$PROJECT_DIR$/src" web="/src" />
+            <mapping deploy="/UYBGames/tests" local="$PROJECT_DIR$/tests" web="/tests" />
+            <mapping deploy="/UYBGames/web" local="$PROJECT_DIR$/web" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/../website-files/css_library" />
+            <excludedPath local="true" path="$PROJECT_DIR$/../website-files/js_library" />
+            <excludedPath local="true" path="$PROJECT_DIR$/../website-files/img" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="mybitnami">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/UYBGames/web" local="$PROJECT_DIR$/web" web="/" />
           </mappings>
         </serverdata>
       </paths>

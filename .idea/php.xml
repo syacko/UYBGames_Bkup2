@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="PhpProjectServersManager">
+    <servers>
+      <server host="192.168.41.60" id="8979c69f-a59d-4362-bed7-9edecda2afcc" name="Ubuntu" use_path_mappings="true" />
+    </servers>
+  </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="5.5.0" />
 </project>

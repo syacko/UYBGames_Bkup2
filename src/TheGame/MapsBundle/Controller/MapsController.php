@@ -4,10 +4,8 @@ namespace TheGame\MapsBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use TheGame\MapsBundle\Entity\Maps;
-use TheGame\MapsBundle\Form\MapsType;
+//use TheGame\MapsBundle\Form\MapsType;
 
 /**
  * Maps controller.
@@ -16,15 +14,6 @@ use TheGame\MapsBundle\Form\MapsType;
  */
 class MapsController extends Controller
 {
-    private $jsLibrary;
-    private $cssLibrary;
-
-    private function __constructor()
-    {
-        $jsLibrary = $this->container->getParameter("js_library");
-        $cssLibrary = $this->container->getParameter("css_library");
-    }
-
     /**
      * Lists all Maps entities.
      *
@@ -41,8 +30,8 @@ class MapsController extends Controller
             'maps/index.html.twig',
             array(
                 'maps' => $maps,
-                'jsLibrary' => $this->jsLibrary,
-                'cssLibrary' => $this->cssLibrary,
+                'jsLibrary' => $this->getParameter('js_library'),
+                'cssLibrary' => $this->getParameter('css_library'),
             )
         );
     }
@@ -64,6 +53,7 @@ class MapsController extends Controller
             $em->persist($map);
             $em->flush();
 
+            /** @noinspection Symfony2PhpRouteMissingInspection */
             return $this->redirectToRoute('crud_maps_show', array('id' => $map->getId()));
         }
 
@@ -71,8 +61,8 @@ class MapsController extends Controller
             'maps/new.html.twig',
             array(
                 'map' => $map,
-                'jsLibrary' => $this->jsLibrary,
-                'cssLibrary' => $this->cssLibrary,
+                'jsLibrary' => $this->getParameter('js_library'),
+                'cssLibrary' => $this->getParameter('css_library'),
                 'form' => $form->createView(),
             )
         );
@@ -92,8 +82,8 @@ class MapsController extends Controller
             'maps/show.html.twig',
             array(
                 'map' => $map,
-                'jsLibrary' => $this->jsLibrary,
-                'cssLibrary' => $this->cssLibrary,
+                'jsLibrary' => $this->getParameter('js_library'),
+                'cssLibrary' => $this->getParameter('css_library'),
                 'delete_form' => $deleteForm->createView(),
             )
         );
@@ -116,6 +106,7 @@ class MapsController extends Controller
             $em->persist($map);
             $em->flush();
 
+            /** @noinspection Symfony2PhpRouteMissingInspection */
             return $this->redirectToRoute('crud_maps_edit', array('id' => $map->getId()));
         }
 
@@ -123,8 +114,8 @@ class MapsController extends Controller
             'maps/edit.html.twig',
             array(
                 'map' => $map,
-                'jsLibrary' => $this->jsLibrary,
-                'cssLibrary' => $this->cssLibrary,
+                'jsLibrary' => $this->getParameter('js_library'),
+                'cssLibrary' => $this->getParameter('css_library'),
                 'edit_form' => $editForm->createView(),
                 'delete_form' => $deleteForm->createView(),
             )
@@ -148,6 +139,7 @@ class MapsController extends Controller
             $em->flush();
         }
 
+        /** @noinspection Symfony2PhpRouteMissingInspection */
         return $this->redirectToRoute('crud_maps_index');
     }
 
@@ -160,6 +152,7 @@ class MapsController extends Controller
      */
     private function createDeleteForm(Maps $map)
     {
+        /** @noinspection Symfony2PhpRouteMissingInspection */
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('crud_maps_delete', array('id' => $map->getId())))
             ->setMethod('DELETE')
